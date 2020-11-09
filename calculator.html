@@ -121,26 +121,28 @@
         function operator(clickedId) {
             isNegative = false;
 
-            if (num == 0 && clickedId == "-") {
+            if (num == 0 && clickedId == "-") { // checks to see if should be a negative number entered
                 isNegative = true;
             } else {
-                if (clickedId == "equal") {
+                if (clickedId == "equal") { // checks to see if =
                     doMath(oldNum, num, oldOperand);
                     num = 0;
                     oldNum = 0;
                     oldOperand = "";
-                } else if (clickedId == "c") {
+                } else if (clickedId == "c") { // checks to see if clear screen
                     num = 0;
                     oldNum = 0;
                     oldOperand = "";
                     display.innerHTML = "0";
-                } else {
-                    if (oldOperand == "") {
+                } else { // if not any of the above, move onto using the operand
+                    if (oldOperand == "") { // checks to see if first time using an operand
                         oldOperand = clickedId;
                         oldNum = num;
                         num = 0;
                     } else {
-                        doMath(oldNum, num, oldOperand);
+                        if (num != 0){ // checks to make sure they dont try and do for example 3 */ and do the math, instead will just replace the operand
+                            doMath(oldNum, num, oldOperand);
+                        }
                         num = 0;
                         oldOperand = clickedId
                     }
