@@ -33,15 +33,22 @@
         #equal {
             background-color: #add8e6;
         }
+
         #equal:hover {
             background-color: #7ec0ee;
         }
 
-        #add, #sub, #mult, #div {
+        #add,
+        #sub,
+        #mult,
+        #div {
             background-color: #fee389;
         }
 
-        #add:hover, #sub:hover, #mult:hover, #div:hover {
+        #add:hover,
+        #sub:hover,
+        #mult:hover,
+        #div:hover {
             background-color: #fed037;
         }
 
@@ -111,17 +118,19 @@
 
 
             num = parseFloat(num.toString() + clickedId);
-            if(isNegative){
+            if (isNegative) {
                 num = -Math.abs(num);
+                console.log("entered if")
             }
             display.innerHTML = num;
+            console.log(num);
 
         }
 
         function operator(clickedId) {
             isNegative = false;
 
-            if (num == 0 && clickedId == "-") { // checks to see if should be a negative number entered
+            if (num == 0 && clickedId == "sub") { // checks to see if should be a negative number entered
                 isNegative = true;
             } else {
                 if (clickedId == "equal") { // checks to see if =
@@ -140,7 +149,7 @@
                         oldNum = num;
                         num = 0;
                     } else {
-                        if (num != 0){ // checks to make sure they dont try and do for example 3 */ and do the math, instead will just replace the operand
+                        if (num != 0) { // checks to make sure they dont try and do for example 3 */ and do the math, instead will just replace the operand
                             doMath(oldNum, num, oldOperand);
                         }
                         num = 0;
